@@ -1,0 +1,54 @@
+{
+  "gameData": [
+    {
+      "category": "Web Development",
+      "gameboard": [
+        {
+          "title": "Frameworks",
+          "data": [
+            {
+              "cost": 200,
+              "question": "This major company created AngularJS",
+              "answer": "Google"
+            },
+            {
+              "cost": 400,
+              "question": "Backbone uses this structure.",
+              "answer": "MVC"
+            },
+            {
+              "cost": 600,
+              "question": "Use this method to get the lastest stream in RxJS",
+              "answer": "flatMapLatest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Web Development",
+      "gameboard": [
+        {
+          "title": "HTTP",
+          "data": [
+            {
+              "cost": 200,
+              "question": "Not found",
+              "answer": "404"
+            },
+            {
+              "cost": 400,
+              "question": "Prefix for non standard headers",
+              "answer": "X"
+            },
+            {
+              "cost": 600,
+              "question": "I'm a little teapot!",
+              "answer": "418"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
