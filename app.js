@@ -4,14 +4,26 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
+var redis = require("redis");
+var sockjs = require("sockjs");
+var TokenSocketServer = require("node-token-sockjs");
 
 var routes = require('./routes/index');
+var app = express(),
+  socketServer = sockjs.createServer(),
+  redisClient = redis.createClient(),
+  pubsubClient = redis.createClient();
 
-var app = express();
+var server = http.createServer(app);
 
+var targetRoot = 'public/dist/';
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('port', process.env.port || 3000);
+app.set('views', path.join(__dirname, 'public/dist/views'));
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, targetRoot)));
+app.use('scripts', express.static(path.join(targetRoot, '/scripts')));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,11 +32,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-var targetRoot = envIs('production') ? 'public/dist' : 'public/src';
-app.use(express.static(path.join(__dirname, targetRoot)));
-
-app.get('/partials/:filename', routes.partials);
-app.use(routes.index);
+app.get('/', routes.index);
+app.get('/partials/:name', routes.partials);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -57,6 +66,31 @@ app.use(function (err, req, res, next) {
   });
 });
 
+var socketOptions = {
+  prefix: "/sockets",
+  sockjs_url: "//cdn.sockjs.org/sockjs-0.3.min.js"
+};
+socketServer.installHandlers(server, socketOptions);
+var tokenServer = new TokenSocketServer(app, redisClient, socketServer, {
+  prefix: socketOptions.prefix,
+  tokenRoute: "/socket/token",
+  pubsubClient: pubsubClient,
+  //socketController: controller,
+  //customMiddleware: customMiddleware,
+  //authentication: authenticationFn,
+  debug: app.get("env") !== "production",
+  routes: {
+    user: {
+      //read: readUsers // now this can be called via the RPC interface
+    }
+  },
+  ping: true
+});
+
+server.listen(3000, function () {
+  console.log('Express server listening on port ' + 3000);
+});
+
 /**
  * Simple checker for env target
  * @param env
@@ -65,6 +99,5 @@ app.use(function (err, req, res, next) {
 function envIs(env) {
   return app.get('env') == env;
 }
-
 
 module.exports = app;
