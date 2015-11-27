@@ -15,12 +15,14 @@ exports.config = {
     ],
     vendor: [
       'public/src/scripts/vendor/**/*.js',
+      bowerRoot + '/rxjs/dist/rx.all.js',
       bowerRoot + '/angular/angular.js',
       bowerRoot + '/angular-aria/angular-aria.js',
       bowerRoot + '/angular-animate/angular-animate.js',
       bowerRoot + '/angular-material/angular-material.js',
       bowerRoot + '/angular-ui-router/release/angular-ui-router.js',
-      bowerRoot + '/rxjs/dist/rx.all.js'
+      bowerRoot + '/eventEmitter/EventEmitter.js',
+      bowerRoot + '/sockjs/sockjs.js'
     ]
   },
   styles: {

@@ -32,7 +32,7 @@ gulp.task('watch', function(){
     rs('copy','inject');
   });
   watch(config.views.templates, function(){
-    rs('copy', 'templateCache')
+    rs('templateCache')
   });
 
 });
