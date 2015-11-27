@@ -7,5 +7,5 @@ exports.index = function(req, res){
 exports.partials = function(req, res){
   var filename = req.params.filename;
   if(!filename) return;  // might want to change this
-  res.render("/public/src/partials/" + filename );
+  res.render("/public/dist/views/partials/" + filename );
 };

@@ -5,5 +5,9 @@ var runSequence = require('run-sequence');
 var tasks = req('./gulp-tasks');
 
 gulp.task('default', function(cb){
-  runSequence('clean', ['copy', 'scripts', 'styles'], 'views', 'serve', cb);
+  runSequence('clean',
+    ['copy', 'scripts', 'styles', 'templateCache'],
+    'inject',
+    'watch',
+    cb);
 });

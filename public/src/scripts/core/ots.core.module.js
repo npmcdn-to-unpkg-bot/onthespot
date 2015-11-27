@@ -1,10 +1,11 @@
 ;(function(){
   'use strict';
 
-  angular.module('ots.core', ['ui.router'])
+  // ots.template injection is built automatically by Gulp
+  angular.module('ots.core', ['ui.router', 'ots.templates'])
     .config(otsConfig);
 
   function otsConfig(){
-    console.log('ots.config');
+
   }
 })();
