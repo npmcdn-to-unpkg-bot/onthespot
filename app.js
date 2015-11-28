@@ -5,17 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
-var redis = require("redis");
-var sockjs = require("sockjs");
-var TokenSocketServer = require("node-token-sockjs");
+var socketServer = require('./utils/socketServer');
 
 var routes = require('./routes/index');
-var app = express(),
-  socketServer = sockjs.createServer(),
-  redisClient = redis.createClient(),
-  pubsubClient = redis.createClient();
-
-var server = http.createServer(app);
+var app = express();
 
 var targetRoot = 'public/dist/';
 // view engine setup
@@ -34,6 +27,9 @@ app.use(cookieParser());
 
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
+
+var server = http.createServer(app);
+var tokenServer = socketServer(server, app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -66,38 +62,8 @@ app.use(function (err, req, res, next) {
   });
 });
 
-var socketOptions = {
-  prefix: "/sockets",
-  sockjs_url: "//cdn.sockjs.org/sockjs-0.3.min.js"
-};
-socketServer.installHandlers(server, socketOptions);
-var tokenServer = new TokenSocketServer(app, redisClient, socketServer, {
-  prefix: socketOptions.prefix,
-  tokenRoute: "/socket/token",
-  pubsubClient: pubsubClient,
-  //socketController: controller,
-  //customMiddleware: customMiddleware,
-  //authentication: authenticationFn,
-  debug: app.get("env") !== "production",
-  routes: {
-    user: {
-      //read: readUsers // now this can be called via the RPC interface
-    }
-  },
-  ping: true
-});
-
 server.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });
-
-/**
- * Simple checker for env target
- * @param env
- * @returns {boolean}
- */
-function envIs(env) {
-  return app.get('env') == env;
-}
 
 module.exports = app;

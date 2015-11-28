@@ -3,35 +3,48 @@
   'use strict';
 
   var options = {
-    host: "https://localhost:3000",
-    tokenPath: "/socket/token",
-    socketPrefix: "/sockets",
+    host: 'http://localhost:3000',
+    socketPrefix: '/sockets',
+    tokenPath: '/socket/token',
+    host: "//localhost:3000",
     reconnect: true,
-    //authentication: {
-    //  foo: "bar"
-    //},
+    authentication: {
+      foo: "bar"
+    },
+    ping: true,
+    // maybe modify sockjs options...
     sockjs: {
       transports: ["xhr-polling"]
     }
   };
 
+  var actions = {
+    ping: function(data, callback){
+      callback(null, data);
+    }
+  };
+
   class RPCService {
-    constructor() {
+
+    /* @ngInject */
+    constructor($log) {
       this.service = new Rx.Subject();
 
-      var socket = new TokenSocket(options);
+      this._socket = new TokenSocket(options, actions);
 
-      // Ready
-      socket.ready(error => {
-        if (error) console.warn('Error in socket.ready:', error);
-
-        console.log('Socket created.', socket);
+      this._socket.ready(function(){
+        $log.debug('Socket ready.')
       });
 
-      // On Message callback
-      socket.onmessage((channel, message) => {
-        console.log('onmessage', channel, message);
-        service.onNext(message);
+      this._socket.onreconnect(function(){
+        console.log('error', arguments)
+      })
+    }
+    test(cb){
+      this._socket.rpc('test', {test: 'Message'}, function(e, res){
+        if(e) $log.error(e);
+
+        cb(res);
       })
     }
   }

@@ -5,6 +5,10 @@
     /* @ngInject */
     constructor(rpcService){
       this.rpcService = rpcService;
+
+      rpcService.test(function(res){
+        console.log('Test:', res);
+      })
     }
   }
   var MenuComponent = {
