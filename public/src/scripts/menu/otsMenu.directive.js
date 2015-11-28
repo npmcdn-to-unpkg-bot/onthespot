@@ -2,13 +2,18 @@
   'use strict';
 
   class MenuComponentController {
+
     /* @ngInject */
-    constructor(rpcService){
+    constructor($state, rpcService){
       this.rpcService = rpcService;
+      this.$state = $state;
 
       rpcService.getCategories(function(res){
         console.log('Categories', res);
       })
+    }
+    create(){
+      this.$state.go('game.create')
     }
   }
   var MenuComponent = {

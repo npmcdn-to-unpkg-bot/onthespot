@@ -3,14 +3,13 @@ var sockjs = require('sockjs');
 var redis = require('redis');
 var debug = require('debug');
 var url = require('url');
-//var jwtUtils = require('./jwt-utils');
-//var jwt = require('jsonwebtoken');
+var jwt = require('jsonwebtoken');
+var jwtUtils = require('./jwt-utils');
 
 module.exports = function (server, app) {
   var redisClient = redis.createClient(),
     pubSub = redis.createClient(),
     socketServer = sockjs.createServer();
-
 
   // Configuration
   socketServer.installHandlers(server, {
@@ -21,34 +20,30 @@ module.exports = function (server, app) {
   // Our authentication function
   // NTS has jwt param attached from client in callback
   var authFunction = function (req, cb) {
-    var params = url.parse(req.url, true);
-    //var token = params.query.jwt;
-
     cb(null, {});
     /*
-     jwt.verify(token, jwtUtils.secret, function (err, decoded) {
-     if (err) {
-     //console.log('Error verifying token NTS auth():', err.stack)
-     return cb(err); // socket not allowed to connect
-     }
-     if (!decoded) {
-     console.log('Error with decoded token in NTS auth():', err.stack)
-     return cb(err);
-     }
-     // Create and assign req.user to the socket
-     // From repo's readme:
-     // 'socket will be issued a token and req.session will be attached to the socket'
-     req.user = decoded;
-     cb(null, req.user);
-     });
-     */
+     var params = url.parse(req.url, true);
+    var token = params.query.jwt;
+
+    jwt.verify(token, jwtUtils.secret, function (err, decoded) {
+      if (err) {
+        //console.log("Error verifying token NTS auth():", err.stack)
+        return cb(err); // socket not allowed to connect
+      }
+      if (!decoded) {
+        console.log("Error with decoded token in NTS auth():", err.stack)
+        return cb(err);
+      }
+      // Create and assign req.user to the socket
+      // From repo's readme:
+      // "socket will be issued a token and req.session will be attached to the socket"
+      req.user = decoded;
+      cb(null, req.user);
+      */
   };
   var controller = {
-    echo: function(auth, data, cb){
+    echo: function (auth, data, cb) {
       cb(null, data);
-    },
-    test: function(auth, data, cb){
-      cb(null, data.test.toUpperCase());
     }
   };
 
@@ -62,7 +57,7 @@ module.exports = function (server, app) {
     ping: true,
     routes: {
       getCategories: function (req, res) {
-        res.json([1,2,3,4])
+        res.json([1, 2, 3, 4])
       }
     }
   });

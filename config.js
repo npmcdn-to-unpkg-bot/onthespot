@@ -22,7 +22,9 @@ exports.config = {
       bowerRoot + '/angular-material/angular-material.js',
       bowerRoot + '/angular-ui-router/release/angular-ui-router.js',
       bowerRoot + '/eventEmitter/EventEmitter.js',
-      bowerRoot + '/sockjs/sockjs.js'
+      bowerRoot + '/sockjs/sockjs.js',
+      bowerRoot + '/angular-local-storage/dist/angular-local-storage.js',
+      bowerRoot + '/angular-jwt/dist/angular-jwt.js'
     ]
   },
   styles: {

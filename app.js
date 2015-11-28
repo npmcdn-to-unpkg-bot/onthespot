@@ -12,11 +12,12 @@ mongoose.connect('mongodb://localhost/ots');
 var routes = require('./routes/index');
 var app = express();
 
-// view engine setup
 app.set('port', process.env.port || 3000);
+
 app.set('views', path.join(__dirname, 'public/dist/views'));
 app.set('view engine', 'ejs');
 
+// Target for serving
 var targetRoot = 'public/dist/';
 app.use(express.static(path.join(__dirname, targetRoot)));
 app.use('scripts', express.static(path.join(targetRoot, '/scripts')));
@@ -32,6 +33,11 @@ app.get('/', routes.index);
 app.use('/api/game', routes.game);
 app.use('/api/users', routes.users);
 app.get('/partials/:name', routes.partials);
+
+// Redirect everything else back to / for Angular routing.
+app.use(function(req, res) {
+  res.render(path.join(__dirname, 'public/dist/views/index.ejs'));
+});
 
 var server = http.createServer(app);
 var tokenServer = socketServer(server, app);

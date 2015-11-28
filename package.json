@@ -13,6 +13,8 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "gulp-babel": "^6.1.0",
+    "jsonwebtoken": "^5.4.1",
+    "lodash": "^3.10.1",
     "mongoose": "^4.2.8",
     "morgan": "~1.6.1",
     "node-token-sockjs": "^2.1.10",
