@@ -13,6 +13,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "gulp-babel": "^6.1.0",
+    "mongoose": "^4.2.8",
     "morgan": "~1.6.1",
     "node-token-sockjs": "^2.1.10",
     "redis": "^2.4.1",

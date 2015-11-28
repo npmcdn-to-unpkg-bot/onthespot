@@ -27,7 +27,7 @@ exports.config = {
   },
   styles: {
     app: [
-      'public/src/styles/**/*.css'
+      'public/src/styles/**/*.scss'
     ],
     vendor: [
       bowerRoot + '/angular-material/angular-material.css'
@@ -37,6 +37,7 @@ exports.config = {
     root: 'public/src/views/*.ejs',
     templates: 'public/src/views/templates/**/*.html'
   },
+  fonts: 'public/fonts/*.*',
   injections: [
     dist + '/scripts/vendor.js',
 

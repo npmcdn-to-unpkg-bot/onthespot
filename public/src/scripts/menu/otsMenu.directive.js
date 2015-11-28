@@ -6,13 +6,13 @@
     constructor(rpcService){
       this.rpcService = rpcService;
 
-      rpcService.test(function(res){
-        console.log('Test:', res);
+      rpcService.getCategories(function(res){
+        console.log('Categories', res);
       })
     }
   }
   var MenuComponent = {
-    templateUrl: 'templates/menu/menuComponent.html',
+    templateUrl: 'templates/menu/otsMenu.html',
     controller: MenuComponentController
   };
 

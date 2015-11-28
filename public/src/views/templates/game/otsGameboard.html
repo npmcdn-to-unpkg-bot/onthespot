@@ -1,0 +1,6 @@
+<header layout="row">
+    <ots-tv-category ng-repeat="title in ::board.categories" data="title"></ots-tv-category>
+</header>
+<div layout="row">
+    <ots-tv-group flex ng-repeat="tvGroup in ::board.questions" tvGroup="tvGroup"></ots-tv-group>
+</div>

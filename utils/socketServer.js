@@ -62,7 +62,7 @@ module.exports = function (server, app) {
     ping: true,
     routes: {
       getCategories: function (req, res) {
-        console.log('getCategories')
+        res.json([1,2,3,4])
       }
     }
   });

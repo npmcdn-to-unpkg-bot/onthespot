@@ -40,10 +40,13 @@
         console.log('error', arguments)
       })
     }
-    test(cb){
-      this._socket.rpc('test', {test: 'Message'}, function(e, res){
-        if(e) $log.error(e);
 
+    /**
+     *
+     */
+    getCategories(cb){
+      this._socket.rpc('getCategories', { category: 'all' }, function(e, res){
+        if(e) $log.error(e);
         cb(res);
       })
     }
