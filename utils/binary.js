@@ -15,21 +15,16 @@ module.exports = function (app, server) {
       console.log(' > Client count: %d', Object.keys(bServer.clients).length);
 
       // TODO: Work on this to dispatch only to certain channels?
-      console.log(meta.channel);
-
       var clients = bServer.clients;
 
       for (var id in clients) {
         if (clients.hasOwnProperty(id)) {
           var otherClient = clients[id];
 
-          if (otherClient != client) {
-            var send = otherClient.createStream(meta);
-            stream.pipe(send);
-          }
+          if (otherClient != client)
+            stream.pipe(otherClient.createStream(meta));
         }
       }
-
       stream.on('end', function(){
         console.log(' >> Stream onEnd()')
       })

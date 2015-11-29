@@ -35,20 +35,6 @@
           }
         } : null);
     }
-
-    /**
-     *
-     * @param buffer
-     * @returns {ArrayBuffer}
-     */
-    convertFloat32ToInt16(buffer) {
-      l = buffer.length;
-      buf = new Int16Array(l);
-      while (l--) {
-        buf[l] = Math.min(1, buffer[l]) * 0x7FFF;
-      }
-      return buf.buffer;
-    }
   }
 
   /**
@@ -78,22 +64,22 @@
           var audioInput = context.createMediaStreamSource(stream);
 
           // create a javascript node
-          this.recorder = context.createScriptProcessor(BUFFER_SIZE, 1, 1);
+          global.recorder = context.createScriptProcessor(BUFFER_SIZE, 1, 1);
 
           // specify the processing function
-          this.recorder.onaudioprocess = e => {
+          global.recorder.onaudioprocess = e => {
             this.recorderProcess(e);
           };
 
           // connect stream to our recorder
-          audioInput.connect(this.recorder);
+          audioInput.connect(global.recorder);
 
           // connect our recorder to the previous destination
-          this.recorder.connect(context.destination);
+          global.recorder.connect(context.destination);
           return this;
         })
         .catch(err => {
-          console.log("The following error occured: " + err.name);
+          console.log("The following error occurred: " + err.name);
         })
     }
 
@@ -112,15 +98,17 @@
     }
 
     /**
-     *
+     * Stops and disconnects
      */
     stop() {
       if (this.recording === true) {
+        console.log('Stopping recording');
         this.recording = false;
 
         //close binary stream
         this.stream.end();
       }
+      global.recorder.disconnect(this.audioContext.destination);
     }
 
     /**
@@ -128,11 +116,8 @@
      * @param e
      */
     recorderProcess(e) {
-      var left = e.inputBuffer.getChannelData(0);
       if (this.recording === true) {
-        //var chunk = this.convertFloat32ToInt16(left);
-        var chunk = left;
-        this.stream.write(chunk);
+        this.stream.write(e.inputBuffer.getChannelData(0));
       }
     }
   }
@@ -164,22 +149,19 @@
      * Plays the current cache.
      */
     playCache(cache) {
-      if(!cache || !cache.length) return;
+      if (!cache || !cache.length) {
+        console.log('No cache or cache length = 0', cache);
+        this.stop();
+      }
+      var source, delay = this.audioContext.createDelay(1);
 
       while (cache.length) {
-        var buffer = cache.shift();
-        var source = this.audioContext.createBufferSource();
-        source.buffer = buffer;
+        source = this.audioContext.createBufferSource();
+        source.connect(delay);
+        source.buffer = cache.shift();
+
         source.connect(this.audioContext.destination);
-
-        if (this.nextTime == 0) {
-          // add a delay of 0.05 seconds
-          this.nextTime = this.audioContext.currentTime + 0.05;
-        }
-        source.start(this.nextTime);
-
-        // schedule buffers to be played consecutively
-        this.nextTime += source.buffer.duration;
+        source.start(0);
       }
     }
 
@@ -188,7 +170,7 @@
      */
     onStream() {
       console.log('>>> Receiving Audio Stream');
-      this.nextTime = 0;
+      this.time = 0;
       this.init = false;
       this.audioCache = [];
     }
@@ -209,8 +191,7 @@
       // make sure we put at least 5 chunks in the buffer before starting
       if (
         (this.init === true) ||
-        ((this.init === false)
-        && (this.audioCache.length > 5))) {
+        ((this.init === false) && (this.audioCache.length > 5))) {
         this.init = true;
         this.playCache(this.audioCache);
       }
