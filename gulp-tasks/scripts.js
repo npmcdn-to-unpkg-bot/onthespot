@@ -27,6 +27,7 @@ gulp.task('scripts:app', function () {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel({
+      plugins: ['check-es2015-constants'],
       presets: ['es2015']
     }))
     .pipe(sourcemaps.write())

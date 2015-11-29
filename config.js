@@ -3,6 +3,7 @@ var dist = 'public/dist';
 var bowerRoot = 'public/bower';
 
 exports.config = {
+  binaryURI: '/binserver',
   scripts: {
     app: [
       '!public/src/scripts/vendor/**/*.js',
@@ -24,7 +25,8 @@ exports.config = {
       bowerRoot + '/eventEmitter/EventEmitter.js',
       bowerRoot + '/sockjs/sockjs.js',
       bowerRoot + '/angular-local-storage/dist/angular-local-storage.js',
-      bowerRoot + '/angular-jwt/dist/angular-jwt.js'
+      bowerRoot + '/angular-jwt/dist/angular-jwt.js',
+      bowerRoot + '/binaryjs/dist/binary.js'
     ]
   },
   styles: {

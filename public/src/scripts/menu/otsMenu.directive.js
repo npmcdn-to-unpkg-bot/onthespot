@@ -12,6 +12,10 @@
         console.log('Categories', res);
       })
     }
+
+    /**
+     * Go to game create
+     */
     create(){
       this.$state.go('game.create')
     }

@@ -23,6 +23,7 @@
     "angular": "master",
     "rxjs": "~4.0.7",
     "sockjs": "~0.3.4",
-    "eventEmitter": "~4.3.0"
+    "eventEmitter": "~4.3.0",
+    "binaryjs": "~0.2.1"
   }
 }

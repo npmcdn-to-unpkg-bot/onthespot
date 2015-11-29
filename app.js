@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var socketServer = require('./utils/socketServer');
+var binaryServer = require('./utils/binary');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ots');
 
@@ -41,6 +42,7 @@ app.use(function(req, res) {
 
 var server = http.createServer(app);
 var tokenServer = socketServer(server, app);
+var binServer = binaryServer(app, server);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

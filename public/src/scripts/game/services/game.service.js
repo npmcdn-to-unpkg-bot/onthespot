@@ -3,11 +3,12 @@
   'use strict';
 
   class GameService {
+
+    /* @ngInject */
     constructor() {
-      console.log('Game service');
     }
   }
 
-  angular.module('ots')
+  angular.module('ots.game')
     .service('gameService', GameService);
 })();
