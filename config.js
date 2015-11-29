@@ -15,17 +15,27 @@ exports.config = {
       src + '/**/*.js'
     ],
     vendor: [
+      // Manually downloaded
       'public/src/scripts/vendor/**/*.js',
-      bowerRoot + '/rxjs/dist/rx.all.js',
+
+      // == Bower  == //
+      // Angular
       bowerRoot + '/angular/angular.js',
       bowerRoot + '/angular-aria/angular-aria.js',
       bowerRoot + '/angular-animate/angular-animate.js',
       bowerRoot + '/angular-material/angular-material.js',
       bowerRoot + '/angular-ui-router/release/angular-ui-router.js',
-      bowerRoot + '/eventEmitter/EventEmitter.js',
-      bowerRoot + '/sockjs/sockjs.js',
       bowerRoot + '/angular-local-storage/dist/angular-local-storage.js',
       bowerRoot + '/angular-jwt/dist/angular-jwt.js',
+
+      // == Standalones == //
+
+      // RXJs
+      bowerRoot + '/rxjs/dist/rx.all.js',
+
+      // Websockets, etc.
+      bowerRoot + '/eventEmitter/EventEmitter.js',
+      bowerRoot + '/sockjs/sockjs.js',
       bowerRoot + '/binaryjs/dist/binary.js'
     ]
   },

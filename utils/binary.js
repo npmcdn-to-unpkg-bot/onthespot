@@ -11,16 +11,18 @@ module.exports = function (app, server) {
     console.log('Binary Server connect()');
 
     client.on('stream', function (stream, meta) {
-      console.log(bServer.clients);
-
       console.log(' > client onStream()');
       console.log(' > Client count: %d', Object.keys(bServer.clients).length);
+
+      // TODO: Work on this to dispatch only to certain channels?
+      console.log(meta.channel);
 
       var clients = bServer.clients;
 
       for (var id in clients) {
         if (clients.hasOwnProperty(id)) {
           var otherClient = clients[id];
+
           if (otherClient != client) {
             var send = otherClient.createStream(meta);
             stream.pipe(send);

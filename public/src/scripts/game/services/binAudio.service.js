@@ -1,4 +1,6 @@
 ;
+// Shoutouts to
+// http://www.jingpingji.com/blog/2015/8/4/transferring-sound-data-with-binaryjs-and-buffering-for-smooth-playbac
 (function (global) {
   'use strict';
 
@@ -103,7 +105,8 @@
         console.log('>>> Start Recording');
 
         //open binary stream
-        this.stream = this.client.createStream({data: 'audio'});
+        // TODO: Pass in subscribed channel information into createStream for meta
+        this.stream = this.client.createStream({data: 'audio', channel: 'stevechannel_1239c'});
         this.recording = true;
       }
     }

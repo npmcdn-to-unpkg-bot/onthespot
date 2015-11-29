@@ -1,0 +1,21 @@
+<section layout="row" flex style="height:100%">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Control Panel</h1>
+    </md-toolbar>
+    <md-content>
+
+      <md-list>
+        <md-list-item><a ui-sref="admin">Control Panel</a></md-list-item>
+        <md-list-item><a ui-sref="admin.users">Users</a></md-list-item>
+        <md-list-item><a ui-sref="admin.categories">Categories</a></md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+
+  <md-content flex layout-padding>
+    <div layout="column" layout-padding layout-align="top left">
+      <div ui-view=""></div>
+    </div>
+  </md-content>
+</section>

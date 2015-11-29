@@ -1,6 +1,21 @@
-<md-content>
-    <md-list>
-        <md-subheader>Categories</md-subheader>
-    </md-list>
+<div layout="column" style="height: 100%">
+  <header layout-padding>
+    <h1><a ui-sref="home">On the Spot!</a></h1>
+  </header>
 
-</md-content>
+  <div layout="row">
+    <!-- User and avatar selection -->
+    <md-content layout="row" flex="40" layout-align="start start">
+      <md-list>
+        <md-subheader>Avatar</md-subheader>
+      </md-list>
+    </md-content>
+
+    <!-- Available categories -->
+    <md-content layout="row" flex>
+      <md-list>
+        <md-subheader>Choose category</md-subheader>
+      </md-list>
+    </md-content>
+  </div>
+</div>

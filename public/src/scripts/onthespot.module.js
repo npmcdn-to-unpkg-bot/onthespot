@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  angular.module('ots', ['ots.core', 'ots.rpc', 'ots.game'])
+  angular.module('ots', ['ots.core', 'ots.rpc', 'ots.game', 'ots.admin'])
     .config(appRoutes)
     .run(monitorRun);
 
