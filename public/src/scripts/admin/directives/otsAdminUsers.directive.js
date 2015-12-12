@@ -5,6 +5,10 @@
   class AdminUsersController {
     constructor(){
     }
+
+    createUser(){
+      console.log('creating user', this.newUser)
+    }
   }
   var adminUsers = {
     controller: 'AdminUsersController',

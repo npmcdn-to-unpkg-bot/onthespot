@@ -1,1 +1,28 @@
-Users
+<h2>User Management</h2>
+<section layout="row">
+  <!-- Create form -->
+  <section flex="40">
+
+    <form name="otsAdminUsers.createForm" ng-submit="otsAdminUsers.createUser()">
+      <md-input-container>
+        <label for="name">Name</label>
+        <input id="name" ng-model="otsAdminUsers.newUser.name" type="text" required/>
+      </md-input-container>
+
+      <div class="form-group" layout="column">
+        <md-checkbox ng-model="otsAdminUsers.newUser.host">Host?</md-checkbox>
+        <md-button class="md-raised" ng-disabled="otsAdminUsers.createForm.$invalid">Create</md-button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Exising Users -->
+  <aside>
+    <md-subheader>Users</md-subheader>
+
+    <ots-user-list>
+      <ots-user ng-repeat="user in ::otsUserList.users" user-data="user"></ots-user>
+    </ots-user-list>
+
+  </aside>
+</section>

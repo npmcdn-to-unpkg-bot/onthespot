@@ -1,0 +1,19 @@
+form, [ng-form] {
+  input {
+    min-width: 220px;
+    max-width: 400px;
+    border-radius: 2px;
+
+    $text-types: text, phone, email, number;
+    @each $type in $text-types {
+      &[type=#{$type}] {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}

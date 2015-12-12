@@ -14,6 +14,7 @@
 
         $timeout(function(){
           recorder.stop();
+          instance.playCache();
         }, 3000)
       });
     }

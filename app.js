@@ -10,6 +10,7 @@ var binaryServer = require('./utils/binary');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ots');
 
+var apiRoutes = require('./routes/api');
 var routes = require('./routes/index');
 var app = express();
 
@@ -31,9 +32,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.get('/', routes.index);
-app.use('/api/game', routes.game);
-app.use('/api/users', routes.users);
+//app.use(routes.api);
 app.get('/partials/:name', routes.partials);
+
+//app.use('/api', apiRoutes);
 
 // Redirect everything else back to / for Angular routing.
 app.use(function(req, res) {
