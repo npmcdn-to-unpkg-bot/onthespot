@@ -1,12 +1,12 @@
-var src = 'public/src';
-var dist = 'public/dist';
-var bowerRoot = 'public/bower';
+var src = 'client/public/src';
+var dist = 'client/public/dist';
+var bowerRoot = 'client/public/bower';
 
 exports.config = {
   binaryURI: '/binserver',
   scripts: {
     app: [
-      '!public/src/scripts/vendor/**/*.js',
+      '!client/public/src/scripts/vendor/**/*.js',
       src + '/**/*.module.js',
       src + '/**/*.config.js',
       src + '/**/*.controller.js',

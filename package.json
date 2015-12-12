@@ -25,7 +25,7 @@
     "token-sockjs-client": "^2.1.0"
   },
   "description": "Jeopardy-type game.",
-  "main": "app.js",
+  "main": "server/app.js",
   "devDependencies": {
     "babel-plugin-check-es2015-constants": "^6.2.0",
     "browser-sync": "^2.10.0",
