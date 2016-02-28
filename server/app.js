@@ -21,9 +21,9 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
-var scriptRoot = path.join(__dirname, '../public/js');
+var scriptRoot = path.join(__dirname, '../public/scripts');
 var nodeRoot = path.join(__dirname, '../node_modules');
-app.use('/js', express.static(scriptRoot));
+app.use('/scripts', express.static(scriptRoot));
 app.use('/node_modules', express.static(nodeRoot));
 
 // uncomment after placing your favicon in /public

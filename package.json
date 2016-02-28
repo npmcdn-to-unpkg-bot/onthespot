@@ -38,7 +38,7 @@
     "concurrently": "^2.0.0",
     "jspm": "^0.16.30",
     "nodemon": "^1.8.1",
-    "typescript": "^1.7.5",
+    "typescript": "1.8.2",
     "typings": "^0.6.8",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
@@ -50,7 +50,8 @@
       "baseURL": "public"
     },
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.7"
+      "angular2": "npm:angular2@^2.0.0-beta.7",
+      "ts": "github:frankwallis/plugin-typescript@^4.0.1"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"

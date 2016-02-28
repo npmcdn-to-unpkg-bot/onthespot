@@ -1,22 +1,17 @@
 var path = require("path");
 
-/*
- node_modules/angular2/bundles/angular2-polyfills.js
- <script src="node_modules/systemjs/dist/system.src.js"
- <script src="node_modules/rxjs/bundles/Rx.js"
- <script src="node_modules/angular2/bundles/angular2.dev.js"
- */
 module.exports = {
   entry: {
     vendor: [
-      'es6-shim/es6-shim.min.js',
+      'es6-shim/es6-shim.js',
       'angular2/bundles/angular2-polyfills.js',
       'rxjs/bundles/Rx.js',
       'angular2/bundles/angular2.dev.js'
     ]
   },
   resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
+    //root: path.join(__dirname, 'node_modules')
+    root: path.join(__dirname, 'jspm_packages/npm')
   },
   node: {
     fs: "empty"

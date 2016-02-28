@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './auth.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,34 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var HomeComponent;
+    var core_1, auth_service_1;
+    var AuthComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (auth_service_1_1) {
+                auth_service_1 = auth_service_1_1;
             }],
         execute: function() {
-            HomeComponent = (function () {
-                function HomeComponent() {
-                    this.message = 'Hello Steve';
-                    console.log('Booted:', this.message);
+            AuthComponent = (function () {
+                function AuthComponent(authService) {
+                    this.authService = authService;
+                    console.log('Auth component:', authService);
                 }
-                HomeComponent = __decorate([
+                AuthComponent = __decorate([
                     core_1.Component({
-                        selector: 'home',
-                        template: 'Hello there!'
+                        selector: 'authenticate',
+                        template: '<h1>Please Log in</h1>',
+                        providers: [auth_service_1.default]
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], HomeComponent);
-                return HomeComponent;
+                    __metadata('design:paramtypes', [auth_service_1.default])
+                ], AuthComponent);
+                return AuthComponent;
             }());
-            exports_1("default",HomeComponent);
+            exports_1("default",AuthComponent);
         }
     }
 });
-//# sourceMappingURL=home.component.js.map
+//# sourceMappingURL=auth.component.js.map
