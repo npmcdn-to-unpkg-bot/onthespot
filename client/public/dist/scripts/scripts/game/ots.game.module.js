@@ -1,8 +1,0 @@
-'use strict';
-
-;(function () {
-  'use strict';
-
-  angular.module('ots.game', ['ots.core']);
-})();
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm90cy5nYW1lLm1vZHVsZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLENBQUMsQ0FBQyxZQUFVO0FBQ1YsY0FBWSxDQUFDOztBQUViLFNBQU8sQ0FBQyxNQUFNLENBQUMsVUFBVSxFQUFFLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQztDQUUxQyxDQUFBLEVBQUcsQ0FBQyIsImZpbGUiOiJzY3JpcHRzL2dhbWUvb3RzLmdhbWUubW9kdWxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiOyhmdW5jdGlvbigpe1xuICAndXNlIHN0cmljdCc7XG5cbiAgYW5ndWxhci5tb2R1bGUoJ290cy5nYW1lJywgWydvdHMuY29yZSddKTtcblxufSkoKTsiXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=

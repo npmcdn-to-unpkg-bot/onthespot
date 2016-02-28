@@ -1,3 +1,5 @@
 node_modules/
-public/bower
-public/dist
+_oldsrc
+bin
+typings
+public/jspm_packages
