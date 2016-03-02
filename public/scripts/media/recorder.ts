@@ -31,6 +31,12 @@ class Recorder extends AudioBase {
     super();
   }
 
+  /**
+   * @method initialize
+   * @description
+   * Grabs the media devices, hooks up everything and hooks up
+   * @returns {Promise<Recorder>}
+   */
   initialize() {
     return this.getMediaDevices({
         audio: true,
