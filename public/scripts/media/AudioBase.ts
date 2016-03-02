@@ -1,10 +1,13 @@
 /**
- * Parent class for creating common assets in Playback and record.
+ * Base class for creating common assets in Playback and record.
  * Sets the audioContext and BinaryClient on `this`, as well as the
  * window.navigator.mediaDevices based on a X-browser method.
  */
 class AudioBase {
+  // Audio context object for manipulation / streaming.
   audioContext:any;
+
+  // The BinaryClient instance
   client:any;
 
   constructor() {

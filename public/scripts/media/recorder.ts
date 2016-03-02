@@ -4,17 +4,28 @@ import {Injectable} from 'angular2/core';
 import AudioBase from './AudioBase';
 import Playback from './Playback';
 
+
 /**
  * @class Recorder
  * @description
  * Handles recording and transport of audio data to server and connected channels.
+ * @example
+ * Record 5 seconds of audio and stop:
+
+ recorder.initialize().then(instance => {
+      instance.start();
+      setTimeout(() => {
+        instance.stop();
+      }, 5000)
+    });
+ *
  */
 @Injectable()
 class Recorder extends AudioBase {
   recording:boolean = false;
+
+  // Stream object from the result of getMediaDevices. In this case, just audio.
   stream:any;
-  audioContext:any;
-  client:any;
 
   constructor(private playback:Playback) {
     super();
@@ -59,8 +70,10 @@ class Recorder extends AudioBase {
 
       //open binary stream
       // TODO: Pass in subscribed channel information into createStream for meta
-      this.stream = this.client.createStream({data: 'audio', channel: 'somechannel'});
-      console.log('Stream:', this.stream);
+      this.stream = this.client.createStream({
+        data: 'audio',
+        channel: 'somechannel'
+      });
       this.recording = true;
     }
   }
