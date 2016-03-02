@@ -1,13 +1,22 @@
 // Shoutouts to http://www.jingpingji.com/blog/2015/8/4/transferring-sound-data-with-binaryjs-and-buffering-for-smooth-playbac
-import AudioBase from './AudioBase';
+import {Injectable} from 'angular2/core';
 
+import AudioBase from './AudioBase';
+import Playback from './Playback';
+
+/**
+ * @class Recorder
+ * @description
+ * Handles recording and transport of audio data to server and connected channels.
+ */
+@Injectable()
 class Recorder extends AudioBase {
   recording:boolean = false;
   stream:any;
   audioContext:any;
   client:any;
 
-  constructor() {
+  constructor(private playback:Playback) {
     super();
   }
 
@@ -32,6 +41,8 @@ class Recorder extends AudioBase {
         // connect our recorder to the previous destination
         window.recorder.connect(context.destination);
 
+        this.playback.listen();
+
         return this;
       })
       .catch(err => {
@@ -48,7 +59,7 @@ class Recorder extends AudioBase {
 
       //open binary stream
       // TODO: Pass in subscribed channel information into createStream for meta
-      this.stream = this.client.createStream({data: 'audio'});
+      this.stream = this.client.createStream({data: 'audio', channel: 'somechannel'});
       console.log('Stream:', this.stream);
       this.recording = true;
     }

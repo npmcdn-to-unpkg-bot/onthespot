@@ -1,7 +1,9 @@
+import {Injectable} from 'angular2/core';
 import AudioBase from './AudioBase';
 /**
  * Class handling audio playback.
  */
+@Injectable()
 class Playback extends AudioBase {
   time:number = 0;
   init:boolean = false;
@@ -11,7 +13,14 @@ class Playback extends AudioBase {
 
   constructor() {
     super();
+  }
 
+  /**
+   * @method listen
+   * @description
+   * Hooks up the event listeners the the common binary client for playback.
+   */
+  listen() {
     this.client.on('stream', (stream) => {
       this.onStream();
 

@@ -10,7 +10,7 @@ import Playback from 'app/media/Playback';
 class HomeComponent {
   name:string;
 
-  constructor(private recorder:Recorder, playback: Playback) {
+  constructor(private recorder:Recorder) {
     this.name = 'Steve';
 
     recorder.initialize().then(instance => {
