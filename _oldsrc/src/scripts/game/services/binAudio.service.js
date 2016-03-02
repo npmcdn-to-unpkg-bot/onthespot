@@ -41,8 +41,6 @@
    *
    */
   class Recorder extends AudioBase {
-
-    /* @ngInject */
     constructor() {
       super();
 

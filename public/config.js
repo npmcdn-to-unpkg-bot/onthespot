@@ -1,26 +1,26 @@
 System.config({
   baseURL: "/",
   defaultJSExtensions: true,
+  transpiler: "typescript",
+  typescriptOptions: {
+    "emitDecoratorMetadata": true
+  },
   paths: {
-    "app/*": "scripts/*",
+    "app/*": "./scripts/*",
     "npm:*": "jspm_packages/npm/*",
     "github:*": "jspm_packages/github/*"
   },
+
   packages: {
     "app": {
-      "defaultExtension": "ts",
-      "meta": {
-        "*.ts": {
-          "loader": "ts"
-        }
-      }
+      "defaultExtension": "ts"
     }
   },
 
   map: {
     "angular2": "npm:angular2@2.0.0-beta.7",
-    "typescript": "npm:typescript@1.8.2",
     "ts": "github:frankwallis/plugin-typescript@4.0.1",
+    "typescript": "npm:typescript@1.8.2",
     "github:frankwallis/plugin-typescript@4.0.1": {
       "typescript": "npm:typescript@1.8.2"
     },
@@ -90,7 +90,7 @@ System.config({
       "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",
-      "systemjs-json": "github:systemsplugin-json@0.1.0"
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:browserify-cipher@1.0.0": {
       "browserify-aes": "npm:browserify-aes@1.0.6",

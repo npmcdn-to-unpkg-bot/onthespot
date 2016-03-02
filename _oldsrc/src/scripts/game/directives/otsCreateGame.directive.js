@@ -7,7 +7,6 @@
     constructor($timeout, chatService) {
       // Recording/playing back audio
       var recorder = chatService.getRecorder();
-      var playback = chatService.getPlayback();
 
       recorder.initialize().then(instance => {
         instance.start();

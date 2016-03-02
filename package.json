@@ -6,7 +6,7 @@
     "postinstall": "npm run typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "start": "concurrently \"npm run tsc:w\" \"nodemon\"",
+    "start": "nodemon",
     "typings": "typings"
   },
   "dependencies": {

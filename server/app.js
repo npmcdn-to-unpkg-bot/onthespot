@@ -11,10 +11,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ots');
 
 var app = express();
-var server = http.createServer(app);
-
-//socketServer(server, app);
-//binaryServer(app, server);
 
 app.set('port', process.env.port || 4000);
 app.set('views', path.join(__dirname, 'public'));
@@ -23,17 +19,22 @@ app.engine('html', require('ejs').renderFile);
 
 var scriptRoot = path.join(__dirname, '../public/scripts');
 var nodeRoot = path.join(__dirname, '../node_modules');
+
 app.use('/scripts', express.static(scriptRoot));
 app.use('/node_modules', express.static(nodeRoot));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../public')));
+
+var server = http.createServer(app);
+socketServer(server, app);
+binaryServer(app, server);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

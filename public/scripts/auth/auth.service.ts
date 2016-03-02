@@ -7,7 +7,6 @@ import {IAuthCredentials, IUser} from './IAuthCredentials.interface';
 class AuthService {
 
   constructor(private http:Http) {
-
   }
 
   /**
@@ -18,7 +17,6 @@ class AuthService {
    * @returns {Promise<IUser>}
    */
   login(creds:IAuthCredentials):Promise<IUser> {
-    console.log('logging in')
     return new Promise(function (resolve, reject) {
       resolve({username: 'Steve-O'})
     })
@@ -26,7 +24,9 @@ class AuthService {
 
   logout():Promise<void> {
     console.log('Logged out.');
-    return;
+    return new Promise(function (resolve, reject) {
+      // void
+    })
   }
 }
 

@@ -1,13 +1,16 @@
+import AudioBase from './AudioBase';
 /**
  * Class handling audio playback.
  */
 class Playback extends AudioBase {
+  time:number = 0;
+  init:boolean = false;
+
+  audioCache:Array = [];
+  audioContext:any;
+
   constructor() {
     super();
-
-    this.nextTime = 0;
-    this.init = false;
-    this.audioCache = [];
 
     this.client.on('stream', (stream) => {
       this.onStream();
@@ -27,7 +30,8 @@ class Playback extends AudioBase {
   playCache(cache) {
     if (!cache || !cache.length) {
       console.log('No cache or cache length = 0', cache);
-      this.stop();
+      // Find out whats supposed to go here
+      //this.stop();
     }
     var source, delay = this.audioContext.createDelay(1);
 
@@ -38,6 +42,21 @@ class Playback extends AudioBase {
 
       source.connect(this.audioContext.destination);
       source.start(0);
+    }
+  }
+
+  handleDataStream(data) {
+    var array = new Float32Array(data);
+    var buffer = this.audioContext.createBuffer(1, 2048, 44100);
+    buffer.copyToChannel(array, 0);
+
+    this.audioCache.push(buffer);
+    // make sure we put at least 5 chunks in the buffer before starting
+    if (
+      (this.init === true) ||
+      ((this.init === false) && (this.audioCache.length > 5))) {
+      this.init = true;
+      this.playCache(this.audioCache);
     }
   }
 
@@ -57,18 +76,5 @@ class Playback extends AudioBase {
   offStream() {
     console.log('||| End of Audio Stream');
   }
-
-  handleDataStream(data) {
-    var array = new Float32Array(data);
-    var buffer = this.audioContext.createBuffer(1, 2048, 44100);
-    buffer.copyToChannel(array, 0);
-
-    this.audioCache.push(buffer);
-    // make sure we put at least 5 chunks in the buffer before starting
-    if (
-      (this.init === true) ||
-      ((this.init === false) && (this.audioCache.length > 5))) {
-      this.init = true;
-      this.playCache(this.audioCache);
-    }
-  }
+}
+export default Playback;

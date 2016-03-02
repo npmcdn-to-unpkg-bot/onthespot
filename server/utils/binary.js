@@ -4,7 +4,12 @@ var config = require('../../config.js').config;
 module.exports = function (app, server) {
   var bServer = new BinaryServer({
     server: server,
-    path: config.binaryURI
+    //path: config.binaryURI,
+    port: 9000
+  });
+
+  bServer.on('error', function(err){
+    console.warn(err)
   });
 
   bServer.on('connection', function (client) {
@@ -30,4 +35,5 @@ module.exports = function (app, server) {
       })
     })
   })
+  return bServer;
 };

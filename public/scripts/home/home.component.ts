@@ -1,19 +1,24 @@
 import {Component} from 'angular2/core';
-import AuthService from 'app/auth/auth.service';
+import Recorder from 'app/media/Recorder';
+import Playback from 'app/media/Playback';
 
 @Component({
   selector: 'home',
   template: `Hello, {{ name }}`,
-  providers: [AuthService]
+  providers: [Recorder, Playback]
 })
 class HomeComponent {
   name:string;
 
-  constructor(authService:AuthService) {
+  constructor(private recorder:Recorder, playback: Playback) {
     this.name = 'Steve';
-    authService.login({}).then(function (result) {
-      console.log('Async result: %o', result)
-    })
+
+    recorder.initialize().then(instance => {
+      instance.start();
+      setTimeout(() => {
+        instance.stop();
+      }, 5000)
+    });
   }
 }
 

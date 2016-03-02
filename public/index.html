@@ -1,18 +1,28 @@
 <html>
 <head>
-    <title>Angular 2 QuickStart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <title>Angular 2 QuickStart</title>
+  <script>document.write('<base href="' + document.location + '" />');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- IE required polyfills, in this exact order -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+
+  <script src="https://code.angularjs.org/2.0.0-beta.7/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/tools/system.js"></script>
+  <script src="https://npmcdn.com/typescript@1.8.2/lib/typescript.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.7/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.7/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.7/router.dev.js"></script>
+  <script src="https://cdn.jsdelivr.net/binaryjs/0.2.1/binary.min.js"></script>
 </head>
 
 <!-- 3. Display the application -->
 <body>
 <home>Loading...</home>
-<script src="build/vendor.js"></script>
 <script src="config.js"></script>
 <script>
-    System.import('app/application')
+  System.import('app/application')
 </script>
 </body>
 

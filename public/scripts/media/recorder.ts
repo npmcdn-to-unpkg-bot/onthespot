@@ -1,22 +1,18 @@
-/**
- *
- */
-class Recorder extends AudioBase {
+// Shoutouts to http://www.jingpingji.com/blog/2015/8/4/transferring-sound-data-with-binaryjs-and-buffering-for-smooth-playbac
+import AudioBase from './AudioBase';
 
-  /* @ngInject */
+class Recorder extends AudioBase {
+  recording:boolean = false;
+  stream:any;
+  audioContext:any;
+  client:any;
+
   constructor() {
     super();
-
-    this.recording = false;
-
-    if (!global.navigator.mediaDevices) {
-      console.log("getUserMedia() not supported.");
-    }
   }
 
   initialize() {
-    return navigator.mediaDevices
-      .getUserMedia({
+    return this.getMediaDevices({
         audio: true,
         video: false
       })
@@ -25,18 +21,17 @@ class Recorder extends AudioBase {
         var audioInput = context.createMediaStreamSource(stream);
 
         // create a javascript node
-        global.recorder = context.createScriptProcessor(BUFFER_SIZE, 1, 1);
+        window.recorder = context.createScriptProcessor(2048, 1, 1);
 
         // specify the processing function
-        global.recorder.onaudioprocess = e => {
-          this.recorderProcess(e);
-        };
+        window.recorder.onaudioprocess = e => this.recorderProcess(e);
 
         // connect stream to our recorder
-        audioInput.connect(global.recorder);
+        audioInput.connect(window.recorder);
 
         // connect our recorder to the previous destination
-        global.recorder.connect(context.destination);
+        window.recorder.connect(context.destination);
+
         return this;
       })
       .catch(err => {
@@ -53,7 +48,8 @@ class Recorder extends AudioBase {
 
       //open binary stream
       // TODO: Pass in subscribed channel information into createStream for meta
-      this.stream = this.client.createStream({data: 'audio', channel: 'stevechannel_1239c'});
+      this.stream = this.client.createStream({data: 'audio'});
+      console.log('Stream:', this.stream);
       this.recording = true;
     }
   }
@@ -69,7 +65,7 @@ class Recorder extends AudioBase {
       //close binary stream
       this.stream.end();
     }
-    global.recorder.disconnect(this.audioContext.destination);
+    window.recorder.disconnect(this.audioContext.destination);
   }
 
   /**
@@ -82,3 +78,4 @@ class Recorder extends AudioBase {
     }
   }
 }
+export default Recorder;
