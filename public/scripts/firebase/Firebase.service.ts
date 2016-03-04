@@ -6,10 +6,18 @@ class FirebaseService {
 
   }
 
+  /**
+   * @method authorize
+   * @description
+   * Logs the user in via Firebase.
+   * @param user The user object with name and token to log in.
+   * @returns {Promise<any>}
+   */
   authorize(user) {
-    console.log('Authorizing', user);
-    REF.authWithCustomToken(user.token, function (err, authData) {
-      console.warn(err, authData);
+    return new Promise(function(resolve, reject){
+      REF.authWithCustomToken(user.token, function (err, authData) {
+        return err ? reject(err) : resolve(authData);
+      })
     })
   }
 

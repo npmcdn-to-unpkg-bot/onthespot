@@ -23,7 +23,7 @@ class AuthComponent {
    * @description
    */
   authorize(){
-    this.authService.generateToken(this.user)
+    this.authService.authorize(this.user)
   }
 }
 
