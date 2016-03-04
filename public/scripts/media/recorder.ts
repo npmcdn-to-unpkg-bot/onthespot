@@ -4,7 +4,6 @@ import {Injectable} from 'angular2/core';
 import AudioBase from './AudioBase';
 import Playback from './Playback';
 
-
 /**
  * @class Recorder
  * @description
@@ -22,13 +21,15 @@ import Playback from './Playback';
  */
 @Injectable()
 class Recorder extends AudioBase {
+  playback: Playback;
   recording:boolean = false;
 
   // Stream object from the result of getMediaDevices. In this case, just audio.
   stream:any;
 
-  constructor(private playback:Playback) {
+  constructor() {
     super();
+    this.playback = new Playback();
   }
 
   /**

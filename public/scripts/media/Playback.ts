@@ -1,9 +1,7 @@
-import {Injectable} from 'angular2/core';
 import AudioBase from './AudioBase';
 /**
  * Class handling audio playback.
  */
-@Injectable()
 class Playback extends AudioBase {
   time:number = 0;
   init:boolean = false;

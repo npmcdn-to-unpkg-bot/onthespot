@@ -1,0 +1,11 @@
+<div class="valign-wrapper">
+  <form class="valign l5">
+    <div>
+      <label for="name"></label>
+      <input type="text" id="name" placeholder="Your real name" [(ngModel)]="user.name">
+    </div>
+  </form>
+  <footer>
+    <button (click)="authorize(user)" class="btn">Authorize</button>
+  </footer>
+</div>

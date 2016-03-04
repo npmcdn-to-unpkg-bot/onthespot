@@ -13,7 +13,8 @@ interface IAuthCredentials {
  * User interface once logged in
  */
 interface IUser {
-  username:string;
+  name:string;
+  token:string;
 }
 
 export {IAuthCredentials, IUser};

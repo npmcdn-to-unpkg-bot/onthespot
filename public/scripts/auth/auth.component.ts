@@ -1,14 +1,29 @@
-import {Component} from 'angular2/core';
-import AuthService from './auth.service';
+import {Component, Output} from 'angular2/core';
+import {FORM_DIRECTIVES} from 'angular2/common';
+
+import AuthService from 'app/auth/auth.service';
+import IAuthCredentials from 'app/auth/IAuthCredentials.interface';
+import User from 'app/auth/User';
 
 @Component({
   selector: 'authenticate',
-  template: '<h1>Please Log in</h1>',
-  providers: [AuthService]
+  templateUrl: 'scripts/auth/auth.component.html',
+  providers: [AuthService, FORM_DIRECTIVES]
 })
 class AuthComponent {
-  constructor(private authService:AuthService){
-    console.log('Auth component:', authService);
+  user: IAuthCredentials;
+
+  constructor(private authService:AuthService) {
+    this.user = new User();
+  }
+
+  /**
+   * @method authorize
+   * Generates a token from Firebase.
+   * @description
+   */
+  authorize(){
+    this.authService.generateToken(this.user)
   }
 }
 
