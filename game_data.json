@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alex Quebec"
+    }
+  ],
+  "games": {
+    "id": 0,
+    "title": "Colors",
+    "creator": 1
+  },
+  "categories": {
+    "colors": {
+      "id": 1,
+      "title": "Colors",
+      "name": "Sample Categories",
+      "description": "Introductory game about color."
+    }
+  },
+  "questions": {
+    "colors": [
+      {
+        "id": 1,
+        "price": 200,
+        "text": "This is also something you eat."
+      },
+      {
+        "id": 2,
+        "price": 400,
+        "text": "Aurora Borialis is usually this color."
+      },
+      {
+        "id": 3,
+        "price": 600,
+        "text": "Unit for measuring color temperature"
+      },
+      {
+        "id": 4,
+        "price": 800,
+        "text": "This animal has more rods and cones than any organism."
+      },
+      {
+        "id": 5,
+        "price": 1000,
+        "text": "Chartreuse most resembles this more common color."
+      },
+      {
+        "id": 6,
+        "price": 1200,
+        "text": "This color was trademarked by a courier service"
+      }
+    ]
+  },
+  "answers": {
+    "colors": [
+      {
+        "id": 1,
+        "answer": "Orange."
+      },
+      {
+        "id": 2,
+        "answer": "Green"
+      },
+      {
+        "id": 3,
+        "answer": "Degrees Kelvin",
+        "extra": "Candle light is around 1500 degress Kelvin, while a sunny day is around 5500."
+      },
+      {
+        "id": 4,
+        "answer": "Mantis Shrimp",
+        "extra": "Our rods and are sensitive to 3 colors, whereas a mantis shrimp is sensitive to 16. Holy fucking rainbows Batman!"
+      },
+      {
+        "id": 5,
+        "answer": "Green, lime, or yellow-green."
+      },
+      {
+        "id": 6,
+        "answer": "Brown",
+        "extra": "UPS has trademarked brown as part of it's marketing strategy and brand identification"
+      }
+    ]
+  }
+}
