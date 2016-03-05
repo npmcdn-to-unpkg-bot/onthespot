@@ -13,9 +13,7 @@ class GameService {
    * Retrieves the list of games.
    */
   getList() {
-    this.ref.once('value', snap => {
-      console.log('gameList:', snap.val(), snap)
-    })
+    return this.ref.observe('value');
   }
 }
 export default GameService;

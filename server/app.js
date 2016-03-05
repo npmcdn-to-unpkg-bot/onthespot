@@ -26,8 +26,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Allow for node_module access as well as basic scripts
 var scriptRoot = path.join(__dirname, '../public/scripts');
 var nodeRoot = path.join(__dirname, '../node_modules');
+var stylesRoot = path.join(__dirname, '../public/build/styles');
+
 app.use('/scripts', express.static(scriptRoot));
 app.use('/node_modules', express.static(nodeRoot));
+app.use('/styles', express.static(stylesRoot));
 
 // Set up our socket and binary server
 var server = http.createServer(app);

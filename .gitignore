@@ -3,3 +3,4 @@ _oldsrc
 bin
 typings
 public/jspm_packages
+public/build
