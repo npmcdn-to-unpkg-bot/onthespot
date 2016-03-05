@@ -9,7 +9,9 @@ import GameService from 'app/game/services/game.service';
 })
 class GameListComponent {
   constructor(private _gameService: GameService) {
-    this.list = _gameService.getList()
+    this.list = _gameService.getList().subscribe(
+      next => console.log('Next', next)
+    )
   }
 
 }

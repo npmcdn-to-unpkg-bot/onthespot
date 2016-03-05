@@ -1,5 +1,6 @@
 $title-font: 'Jeopardy-Heavy';
 $title-font-light: 'Jeopardy-Regular';
+$tv-screen: 'Helvetica Inserat';
 @font-face {
   font-family: $title-font;
   src: url('/fonts/gyparody_hv-webfont.eot');
@@ -22,4 +23,9 @@ $title-font-light: 'Jeopardy-Regular';
   url('/fonts/gyparody_rg-webfont.svg#gyparodyregular') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: $tv-screen;
+  src: url('/fonts/HelveticaInserat-Roman.otf');
 }

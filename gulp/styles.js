@@ -5,6 +5,7 @@ var csso = require('gulp-csso');
 var debug = require('gulp-debug');
 var changed = require('gulp-changed');
 var plumber = require('gulp-plumber');
+var prefix = require('gulp-autoprefixer');
 var config = require('../config');
 
 var stylesRoot = config.styles;
