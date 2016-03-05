@@ -1,7 +1,7 @@
 import {Inject, Injectable} from 'angular2/core';
 import {Http, Headers, Response} from 'angular2/http';
 
-import {IAuthCredentials} from './IAuthCredentials.interface';
+import {IAuth} from './IAuth.interface';
 import FirebaseFactory from 'app/firebase/Firebase.factory';
 
 @Injectable()

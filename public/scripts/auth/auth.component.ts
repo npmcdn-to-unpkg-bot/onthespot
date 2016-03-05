@@ -2,9 +2,8 @@ import {Component, Output} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 
 import AuthService from 'app/auth/auth.service';
-import IAuthCredentials from 'app/auth/IAuthCredentials.interface';
+import IAuth from 'app/auth/IAuth.interface';
 import User from 'app/auth/User';
-import GameService from 'app/game/services/Game.service';
 
 @Component({
   selector: 'authenticate',
@@ -12,24 +11,23 @@ import GameService from 'app/game/services/Game.service';
   providers: [AuthService, FORM_DIRECTIVES]
 })
 class AuthComponent {
-  user:IAuthCredentials;
-  gameService:GameService;
+  user:IAuth;
 
   constructor(private authService:AuthService) {
     this.user = new User();
-    this.gameService = new GameService();
   }
 
   /**
    * @method authorize
-   * Generates a token from Firebase.
+   * Authorizes with Firebase and logs in.
    * @description
    */
   authorize() {
     this.authService
       .authorize(this.user)
       .then(() => {
-        this.gameService.getList()
+        // Route elsewhere
+
       })
   }
 }

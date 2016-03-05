@@ -1,7 +1,7 @@
 /**
  * Expected data structure for authentication credentials
  */
-interface IAuthCredentials {
+interface IAuth {
   name:string;
   username?:string;
   email?:string;
@@ -17,4 +17,4 @@ interface IUser {
   token:string;
 }
 
-export {IAuthCredentials, IUser};
+export {IAuth, IUser};
