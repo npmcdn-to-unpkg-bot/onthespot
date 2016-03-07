@@ -1,16 +1,16 @@
 import {Component} from 'angular2/core';
 import {ROUTER_PROVIDERS, RouteConfig} from 'angular2/router';
 
-import ScreenComponent from 'app/game/components/screen.component';
+import GameListComponent from 'app/game/components/game-list.component';
 
 @Component({
   selector: 'on-the-spot',
   templateUrl: 'scripts/base/onthespot.html',
-  directives: [ScreenComponent],
+  directives: [GameListComponent],
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
-  {path: '/', name: 'Home', component: OnTheSpot, useAsDefault: true}
+  {path: '/game', name: 'Game List', component: GameListComponent, useAsDefault: true}
 ])
 class OnTheSpot {
   constructor() {

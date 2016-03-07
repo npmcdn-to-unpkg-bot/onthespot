@@ -5,11 +5,18 @@
       "name": "Alex Quebec"
     }
   ],
-  "games": {
-    "id": 0,
-    "title": "Colors",
-    "creator": 1
-  },
+  "games": [
+    {
+      "id": 0,
+      "title": "Colors",
+      "creator": 1
+    },
+    {
+      "id": 1,
+      "title": "Photography",
+      "creator": 1
+    }
+  ],
   "categories": {
     "colors": {
       "id": 1,

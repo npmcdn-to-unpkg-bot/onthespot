@@ -1,21 +1,22 @@
 import {Component, Input} from 'angular2/core';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
   selector: 'screen',
+  directives: [ROUTER_DIRECTIVES],
   template: `
-    <div>
-        <h3 [textContent]="title"></h3>
-    </div>
+    <a href="">
+       <h3 [textContent]="game.title"></h3>
+    </a>
   `
 })
   /**
    *
    */
 class ScreenComponent {
-  @Input() title:string;
+  @Input() game:any;
 
   constructor() {
-    console.log('Screen', this)
   }
 }
 export default ScreenComponent;

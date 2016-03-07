@@ -9,7 +9,9 @@ module.exports = exports = {
   dist: dist,
 
   scripts: {
+    vendor: [
 
+    ]
   },
   styles: {
     vendorIncludes: [
