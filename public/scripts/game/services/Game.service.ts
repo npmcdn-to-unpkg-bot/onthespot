@@ -24,15 +24,21 @@ class GameService {
    * @returns {Promise<Array>|}
    */
   getAnswers(title?:string) {
-    return new Promise(function (resolve, reject) {
+    if(!title)
+      console.warn('getAnswers() title parameter is empty. TODO Default behavior.');
 
+    return new Promise(function (resolve, reject) {
       FirebaseFactory.get('answers').orderByKey().once('value', function (snap) {
+        var found = false;
+
         snap.forEach(function (res) {
           if (res.key() === title) {
-            resolve(snap.val());
+            found = true;
+            resolve(res.val());
           }
         });
-        reject(`No answers for ${title}`);
+        if (!found)
+          reject(`No answers for ${title}`);
       })
     });
   }

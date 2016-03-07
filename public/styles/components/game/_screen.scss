@@ -3,8 +3,8 @@ screen {
   margin: 10px;
   display: block;
   font-family: $tv-screen;
-  height: 200px;
-  width: 320px;
+  width: 25vw;
+  height: calc(25vw / 1.75);
   cursor: pointer;
   background-color: mediumblue;
   border-radius: 5px;
@@ -15,7 +15,7 @@ screen {
     height: 100%;
   }
   h3 {
-    font-size: 50px;
+    font-size: 3vw;
     margin: 0;
     width: 100%;
     vertical-align: middle;

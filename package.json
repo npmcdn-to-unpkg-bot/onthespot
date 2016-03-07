@@ -6,7 +6,7 @@
     "postinstall": "npm run typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "start": "nodemon",
+    "start": "nodemon server.js",
     "typings": "typings"
   },
   "dependencies": {

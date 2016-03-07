@@ -5,7 +5,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   selector: 'screen',
   directives: [ROUTER_DIRECTIVES],
   template: `
-    <a href="">
+    <a>
        <h3 [textContent]="game.title"></h3>
     </a>
   `

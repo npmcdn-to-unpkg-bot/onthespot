@@ -22,40 +22,60 @@
       "id": 1,
       "title": "Colors",
       "name": "Sample Categories",
-      "description": "Introductory game about color."
+      "description": "Introductory game about color"
     }
   },
   "questions": {
     "colors": [
       {
         "id": 1,
-        "price": 200,
-        "text": "This is also something you eat."
+        "text": "This is also something you eat"
       },
       {
         "id": 2,
-        "price": 400,
-        "text": "Aurora Borialis is usually this color."
+        "text": "Aurora Borialis is usually this color"
       },
       {
         "id": 3,
-        "price": 600,
         "text": "Unit for measuring color temperature"
       },
       {
         "id": 4,
-        "price": 800,
-        "text": "This animal has more rods and cones than any organism."
+        "text": "This animal has more rods and cones than any organism"
       },
       {
         "id": 5,
-        "price": 1000,
-        "text": "Chartreuse most resembles this more common color."
+        "text": "Chartreuse most resembles this more common color"
       },
       {
         "id": 6,
-        "price": 1200,
         "text": "This color was trademarked by a courier service"
+      }
+    ],
+    "photography": [
+      {
+        "id": 1,
+        "text": "Mechanism which alters light intensity found in lenses"
+      },
+      {
+        "id": 2,
+        "text": "This material made from wood is the base of modern films" 
+      },
+      {
+        "id": 3,
+        "text": "f/1.4 6 stops down brings us to this number"
+      },
+      {
+        "id": 4,
+        "text": "This digital sensor type excels in low light"
+      },
+      {
+        "id": 5,
+        "text": "Translated from latin means this"
+      },
+      {
+        "id": 6,
+        "text": "Diffractive optics aid in reducing this optical occurrence"
       }
     ]
   },
@@ -63,7 +83,7 @@
     "colors": [
       {
         "id": 1,
-        "answer": "Orange."
+        "answer": "Orange"
       },
       {
         "id": 2,
@@ -72,7 +92,7 @@
       {
         "id": 3,
         "answer": "Degrees Kelvin",
-        "extra": "Candle light is around 1500 degress Kelvin, while a sunny day is around 5500."
+        "extra": "Candle light is around 1500 degress Kelvin, while a sunny day is around 5500"
       },
       {
         "id": 4,
@@ -81,12 +101,40 @@
       },
       {
         "id": 5,
-        "answer": "Green, lime, or yellow-green."
+        "answer": "Green, lime, or yellow-green"
       },
       {
         "id": 6,
         "answer": "Brown",
         "extra": "UPS has trademarked brown as part of it's marketing strategy and brand identification"
+      }
+    ],
+    "photography": [
+      {
+        "id": 1,
+        "answer": "Aperture",
+        "extra": "Aperture controls intensity, shutters control duration."
+      },
+      {
+        "id": 2,
+        "answer": "Cellulose"
+      },
+      {
+        "id": 3,
+        "answer": 8,
+        "extra": "1.4 -> 2 -> 2.8 -> 4 -> 5.6 -> 8"
+      },
+      {
+        "id": 4,
+        "answer": "CMOS. While sensor tech is very good these days, CMOS still has a slight advantage in low light scenarios."
+      },
+      {
+        "id": 5,
+        "answer": "Painting with light, or Drawing with light, any variance thereof."
+      },
+      {
+        "id": 6,
+        "answer": "Chromatic aberration."
       }
     ]
   }

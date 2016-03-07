@@ -1,1 +1,1 @@
-export {OnTheSpot} from './base/onthespot.component';
+export * from './base/onthespot.component';
