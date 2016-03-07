@@ -1,24 +1,25 @@
 import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
 
 import GameService from 'app/game/services/game.service';
 import ScreenComponent from './screen.component';
 
 @Component({
   selector: 'game-list',
-  templateUrl: 'scripts/game/components/game-list.html',
   directives: [ScreenComponent],
-  providers: [GameService]
+  providers: [GameService],
+  template: `
+  <h4>Choose your game</h4>
+  <screen *ngFor="#game of list" [game]="game"></screen>`
 })
 class GameListComponent {
   private list:Array;
 
-  constructor(private _gameService:GameService,
-              private _router:Router) {
+  constructor(private gameService:GameService) {
 
     // Gets the list of games immediately
-    _gameService.getList(snap => {
-      this.list = snap.val();
+    gameService.getList(results => {
+      this.list = results
+      console.log(this.list)
     });
   }
 
@@ -29,10 +30,10 @@ class GameListComponent {
    * @param game
    */
   openGame(game) {
-    if(!game){
+    if (!game)
       console.log('No game specified');
-    }
-    this._gameService.getAnswers(game.title.toLowerCase())
+
+    this.gameService.getAnswers(game.title.toLowerCase())
       .then(res => {
         console.log(res)
       })

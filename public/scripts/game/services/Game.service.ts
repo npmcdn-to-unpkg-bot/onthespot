@@ -3,7 +3,21 @@ import FirebaseFactory from 'app/firebase/Firebase.factory';
 class GameService {
   ref:Firebase;
 
+  /**
+   *
+   * @param data
+   * @returns {{title: any, id: any}}
+   */
+  static getInstance(data){
+    let key = Object.keys(data);
+    return {
+      title: key[0],
+      description: data[key].description
+    }
+  }
+
   constructor() {
+    // Get a new firebase object at /games
     this.ref = FirebaseFactory.get('games');
   }
 
@@ -13,7 +27,23 @@ class GameService {
    * Retrieves the list of games.
    */
   getList(cb) {
-    return this.ref.on('value', cb);
+    return this.ref.on('value', function(snap){
+      let value = snap.val();
+      value = Array.isArray(value) ? value : [value];
+
+      cb(value.map(game => GameService.getInstance(game)));
+    });
+  }
+
+  /**
+   * TODO
+   * @param title
+   * @returns {{description: string}}
+   */
+  getDetails(title:string){
+    return {
+      description: 'Todo'
+    }
   }
 
   /**
