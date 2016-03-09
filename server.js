@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -28,6 +28,7 @@ var scriptRoot = path.join(__dirname, '/public/scripts');
 var stylesRoot = path.join(__dirname, '/public/build/styles');
 app.use('/scripts', express.static(scriptRoot));
 app.use('/styles', express.static(stylesRoot));
+app.use('/s', express.static(path.join(__dirname, 'public/scripts/')));
 
 // Set up our socket and binary server
 var server = http.createServer(app);
@@ -37,6 +38,7 @@ binaryServer(app, server);
 app.use('/auth', authRoutes);
 
 app.all('/*', function (req, res) {
+  console.log('Redirecting from', req.url);
   res.render('index.html');
 });
 

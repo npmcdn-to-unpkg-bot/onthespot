@@ -1,5 +1,10 @@
-import FirebaseFactory from 'app/firebase/Firebase.factory';
+import 'lodash';
+import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Rx';
+import Firebase from 'firebase';
+import FirebaseFactory from 'app/firebase/firebase.factory';
 
+@Injectable()
 class GameService {
   ref:Firebase;
 
@@ -8,7 +13,7 @@ class GameService {
    * @param data
    * @returns {{title: any, id: any}}
    */
-  static getInstance(data){
+  static getInstance(data) {
     let key = Object.keys(data);
     return {
       title: key[0],
@@ -17,7 +22,6 @@ class GameService {
   }
 
   constructor() {
-    // Get a new firebase object at /games
     this.ref = FirebaseFactory.get('games');
   }
 
@@ -27,7 +31,7 @@ class GameService {
    * Retrieves the list of games.
    */
   getList(cb) {
-    return this.ref.on('value', function(snap){
+    return this.ref.on('value', function (snap) {
       let value = snap.val();
       value = Array.isArray(value) ? value : [value];
 
@@ -40,7 +44,7 @@ class GameService {
    * @param title
    * @returns {{description: string}}
    */
-  getDetails(title:string){
+  getDetails(title:string) {
     return {
       description: 'Todo'
     }
@@ -53,24 +57,19 @@ class GameService {
    * @param title {String} Name of the game.
    * @returns {Promise<Array>|}
    */
-  getAnswers(title?:string) {
-    if(!title)
+  getCategories(title?:string) {
+    if (!title)
       console.warn('getAnswers() title parameter is empty. TODO Default behavior.');
 
-    return new Promise(function (resolve, reject) {
-      FirebaseFactory.get('answers').orderByKey().once('value', function (snap) {
-        var found = false;
+    title = title.toLowerCase();
 
-        snap.forEach(function (res) {
-          if (res.key() === title) {
-            found = true;
-            resolve(res.val());
-          }
+    return new Observable(observer => {
+      FirebaseFactory.get('answers').orderByKey().once('value', function (snap) {
+        snap.forEach(entry => {
+          observer.next(entry)
         });
-        if (!found)
-          reject(`No answers for ${title}`);
       })
     });
   }
 }
-export default GameService;
+export {GameService};

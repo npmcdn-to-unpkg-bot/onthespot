@@ -67,6 +67,7 @@
     "dependencies": {
       "angular2": "npm:angular2@^2.0.0-beta.7",
       "firebase": "npm:firebase@^2.4.1",
+      "lodash": "npm:lodash@^4.6.1",
       "materialize": "npm:materialize-css@0.97.5",
       "ts": "github:frankwallis/plugin-typescript@^4.0.1"
     },

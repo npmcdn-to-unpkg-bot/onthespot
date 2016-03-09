@@ -3,7 +3,10 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "typescript",
   typescriptOptions: {
-    "emitDecoratorMetadata": true
+    module: "commonjs",
+    noImplicitAny: true,
+    typeCheck: true,
+    tsconfig: true
   },
   paths: {
     "app/*": "./scripts/*",
@@ -20,6 +23,7 @@ System.config({
   map: {
     "angular2": "npm:angular2@2.0.0-beta.7",
     "firebase": "npm:firebase@2.4.1",
+    "lodash": "npm:lodash@4.6.1",
     "materialize": "npm:materialize-css@0.97.5",
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "ts": "github:frankwallis/plugin-typescript@4.0.1",
@@ -335,6 +339,10 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:lodash@4.6.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:materialize-css@0.97.5": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",

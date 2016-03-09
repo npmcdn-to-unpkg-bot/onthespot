@@ -1,22 +1,25 @@
-import {Component, Input} from 'angular2/core';
+import {ViewEncapsulation, Component, Input, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
   selector: 'screen',
   directives: [ROUTER_DIRECTIVES],
+  //encapsulation: ViewEncapsulation.None,
+  styleUrls: ['s/game/components/screen.css'],
   template: `
-    <a [routerLink]="['GameDetails', {title: game.title}]">
-       <h3 [textContent]="game.title"></h3>
+    <a>
+       <h3>Some text here</h3>
     </a>
   `
 })
   /**
    *
    */
-class ScreenComponent {
-  @Input() game:any;
-
+class ScreenComponent implements OnInit {
   constructor() {
   }
+
+  ngOnInit() {
+  }
 }
-export default ScreenComponent;
+export { ScreenComponent };

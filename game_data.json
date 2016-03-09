@@ -12,7 +12,7 @@
     }
   },
   "questions": {
-    "colors": {
+    "Colors": {
       "What's in a name?": [
         "Gardeners thumbs are this color",
         "This yellow hue in the Crayola box is a common dish",
@@ -34,7 +34,7 @@
     }
   },
   "answers": {
-    "colors": {
+    "Colors": {
       "What's in a name?": [
         "Green",
         "Macaroni and Cheese",

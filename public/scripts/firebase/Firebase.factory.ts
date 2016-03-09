@@ -1,3 +1,5 @@
+import Firebase from 'firebase';
+
 class FirebaseFactory {
 
   static get(path:string = ''):Firebase {
