@@ -6,7 +6,10 @@ System.config({
     module: "commonjs",
     noImplicitAny: true,
     typeCheck: true,
-    tsconfig: true
+    tsconfig: true,
+    files: [
+      'typings/main.d.ts'
+    ]
   },
   paths: {
     "app/*": "./scripts/*",
